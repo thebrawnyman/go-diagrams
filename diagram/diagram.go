@@ -87,7 +87,7 @@ func (d *Diagram) Render() error {
 }
 
 func (d *Diagram) render() error {
-	outdir := d.options.Name
+	outdir := d.options.Directory
 	if err := os.Mkdir(outdir, os.ModePerm); err != nil {
 		return err
 	}
@@ -125,7 +125,7 @@ func (d *Diagram) renderOutput() error {
 }
 
 func (d *Diagram) saveDot() error {
-	fname := filepath.Join(d.options.Name, d.options.FileName+".dot")
+	fname := filepath.Join(d.options.Directory, d.options.FileName+".dot")
 
 	return ioutil.WriteFile(fname, []byte(d.g.String()), os.ModePerm)
 }

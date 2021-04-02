@@ -5,7 +5,7 @@ import (
 )
 
 type Options struct {
-	Name       string
+	Directory  string
 	FileName   string
 	OutFormat  string
 	Direction  string
@@ -44,7 +44,7 @@ type Option func(*Options)
 
 func DefaultOptions(opts ...Option) Options {
 	options := Options{
-		Name:       "go-diagrams",
+		Directory:  "go-diagrams",
 		FileName:   "go-diagram",
 		OutFormat:  "dot",
 		Label:      "",
@@ -64,6 +64,12 @@ func DefaultOptions(opts ...Option) Options {
 	}
 
 	return options
+}
+
+func Directory(f string) Option {
+	return func(o *Options) {
+		o.FileName = f
+	}
 }
 
 func Filename(f string) Option {
