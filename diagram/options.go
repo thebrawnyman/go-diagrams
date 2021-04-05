@@ -68,7 +68,7 @@ func DefaultOptions(opts ...Option) Options {
 
 func Directory(f string) Option {
 	return func(o *Options) {
-		o.FileName = f
+		o.Directory = f
 	}
 }
 
